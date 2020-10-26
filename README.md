@@ -6,3 +6,7 @@ lab5_robot.m file is the RRR robot. 1kg load is applied at the end effector and 
 planarrobot.m file is for simple simulation of planar RRRRR robot.
 
 video of the robots moving: https://www.youtube.com/watch?v=EmJKdEb-TOM
+
+in part 2 of the lab controllers in simulink were created. First the most simple model was used for RRR robot. Big gains were used to fight gravity. Noticeable error. 
+
+next, controller with error feedback was created. The error became almost 0. The same was done for the RRRRRR planar robot.
