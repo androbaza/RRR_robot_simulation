@@ -45,4 +45,5 @@ The initial learning rate was chosen 0.01, and lr schedule was made to be peicew
 ### Tuned accuracy:
 ![graphs](https://github.com/androbaza/RRR_robot_simulation/blob/main/Inverse%20Kinematics%20lab7/tuned%20result.png)
 ### Plot of real and predicted end-effector positions:
+The end effector was deliberately moved to the side a little so that both plotted points could be seen. The error is indeed negligible.
 ![graphs](https://github.com/androbaza/RRR_robot_simulation/blob/main/Inverse%20Kinematics%20lab7/plotted%20check%20on%20estimation.png)
