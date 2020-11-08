@@ -3,7 +3,7 @@ load net
 % clear q1 q2 q3 q4 q5 forh 
 %%
 % rng(0,'twister');
-test_size = 1000;
+test_size = 500;
 % q1
 q_min = -114;
 q_max = 114;
@@ -65,3 +65,27 @@ xyz
 pr_xyz
 
 a
+
+
+home = [45 45 -45 45 -45]*deg; 
+planar_robot.plot(home)
+planar_robot.teach(home)
+pose_endh = planar_robot.fkine(home); 
+hold on
+
+%real
+xyzh = transl(pose_endh);
+scatter3(xyzh(1),xyzh(2),xyzh(3), '*')
+
+% predicted
+samplep = ones(1,1,3);
+samplep(1,:) = xyzh;
+xyz2 = predict(net, samplep);
+prediction = [xyz2(1),xyz2(2),xyz2(3), xyz2(4), xyz2(5)]
+pose_endp = planar_robot.fkine(prediction);
+xyzp = transl(pose_endp);
+hold on 
+scatter3(xyzp(1),xyzp(2),xyzp(3),'filled')
+
+xyzh 
+xyzp

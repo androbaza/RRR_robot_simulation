@@ -1,6 +1,8 @@
 % the data set size can be also tuned
-data_size = 5000;
-[XTrain, YTrain] = create_dataset(data_size);
+%  data_size = 20000;
+%  [XTrain1, YTrain1] = create_dataset(data_size);
+ XTrain = XTrain1;
+ YTrain = YTrain1;
 %q = [q1, q2, q3, q4, q5];
 XXy = XTrain;
 % nFeatures = 20; 
@@ -20,24 +22,29 @@ nFeatures = 3;
 numClasses = 5;
 
 layers = [ ...
-     imageInputLayer([1 1 nFeatures]);
-    
-    fullyConnectedLayer(512)
-    leakyReluLayer
-...
-    fullyConnectedLayer(numClasses)  
+    imageInputLayer([1 1 nFeatures]);
+    fullyConnectedLayer(128)
+    reluLayer
+    fullyConnectedLayer(128)
+    reluLayer
+    fullyConnectedLayer(64)
+    reluLayer
+    fullyConnectedLayer(64)
+    reluLayer
+    fullyConnectedLayer(numClasses) 
     regressionLayer
-    
-    ]
+    ] 
 
-
-
-maxEpochs = 10;
-miniBatchSize = 100;
+maxEpochs = 12;
+miniBatchSize = 250;
 
 options = trainingOptions('adam', ...
     'ExecutionEnvironment','cpu', ...
-    'GradientThreshold',1, ...
+    'InitialLearnRate',0.01, ...
+    'LearnRateSchedule','piecewise', ...
+    'LearnRateDropFactor',0.2, ...
+    'LearnRateDropPeriod',4, ...
+    'GradientThresholwd',1, ...
     'MaxEpochs',maxEpochs, ...
     'MiniBatchSize',miniBatchSize, ...
     'SequenceLength','longest', ...
